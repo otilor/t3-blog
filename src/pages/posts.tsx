@@ -2,13 +2,12 @@
 import { useState } from 'react'
 import { Dialog } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import Link from 'next/link'
 
 const navigation = [
   { name: 'Product', href: '#' },
 ]
 
-export default function Posts() {
+export default function PostComponent() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
@@ -134,20 +133,6 @@ export default function Posts() {
                 <h1 className="text-4xl font-bold tracking-tight sm:text-center sm:text-6xl">
                   Write your thoughts
                 </h1>
-                <p className="mt-6 text-lg leading-8 text-gray-600 sm:text-center">
-                  You can jot down your thoughts using our nice blog application that helps you create, edit and delete posts
-                </p>
-                <div className="mt-8 flex gap-x-4 sm:justify-center">
-                  <Link
-                    href="/posts"
-                    className="inline-block rounded-lg bg-indigo-600 px-4 py-1.5 text-base font-semibold leading-7 text-white shadow-sm ring-1 ring-indigo-600 hover:bg-indigo-700 hover:ring-indigo-700"
-                  >
-                    Get started
-                    <span className="text-indigo-200" aria-hidden="true">
-                      &rarr;
-                    </span>
-                  </Link>
-                </div>
               </div>
               <div className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]">
                 <svg
