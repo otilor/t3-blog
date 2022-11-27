@@ -8,7 +8,7 @@ const navigation = [
   { name: 'Product', href: '#' },
 ]
 
-export default function Nav() {
+export default function Posts() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
