@@ -4,7 +4,7 @@ import { Dialog } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Example from '../../components/PostComponent'
 const navigation = [
-  { name: 'Product', href: '#' },
+  { name: 'Bloggy', href: '#' },
 ]
 
 export default function PostComponent() {
