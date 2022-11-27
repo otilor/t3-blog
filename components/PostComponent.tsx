@@ -33,7 +33,7 @@ export default function Example() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="sm:text-center">
           <h2 className="text-lg font-semibold leading-8 text-indigo-600">Transactions</h2>
-          <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">A better way to send money</p>
+          <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Latest posts</p>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-gray-600">
             Lorem ipsum dolor sit amet consect adipisicing elit. Possimus magnam voluptatum cupiditate veritatis in
             accusamus quisquam.
