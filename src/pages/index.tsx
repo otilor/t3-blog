@@ -3,7 +3,7 @@ import Head from "next/head";
 import { signIn, signOut, useSession } from "next-auth/react";
 
 import { trpc } from "../utils/trpc";
-import Nav from "../../components/Nav";
+import Nav from "../../components/Home";
 
 const Home: NextPage = () => {
   return (
