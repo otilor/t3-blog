@@ -145,8 +145,7 @@ export default function Nav() {
                   Write your thoughts
                 </h1>
                 <p className="mt-6 text-lg leading-8 text-gray-600 sm:text-center">
-                  Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt
-                  amet fugiat veniam occaecat fugiat aliqua.
+                  You can jot down your thoughts using our nice blog application that helps you create, edit and delete posts
                 </p>
                 <div className="mt-8 flex gap-x-4 sm:justify-center">
                   <a
@@ -155,15 +154,6 @@ export default function Nav() {
                   >
                     Get started
                     <span className="text-indigo-200" aria-hidden="true">
-                      &rarr;
-                    </span>
-                  </a>
-                  <a
-                    href="#"
-                    className="inline-block rounded-lg px-4 py-1.5 text-base font-semibold leading-7 text-gray-900 ring-1 ring-gray-900/10 hover:ring-gray-900/20"
-                  >
-                    Live demo
-                    <span className="text-gray-400" aria-hidden="true">
                       &rarr;
                     </span>
                   </a>
