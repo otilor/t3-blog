@@ -3,8 +3,9 @@ import { useState } from 'react'
 import { Dialog } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Example from '../../components/PostComponent'
+import Link from 'next/link'
 const navigation = [
-  { name: 'Bloggy', href: '#' },
+  { name: 'Bloggy', href: '/' },
 ]
 
 export default function PostComponent() {
@@ -60,9 +61,9 @@ export default function PostComponent() {
             </div>
             <div className="hidden lg:flex lg:min-w-0 lg:flex-1 lg:justify-center lg:gap-x-12">
               {navigation.map((item) => (
-                <a key={item.name} href={item.href} className="font-semibold text-gray-900 hover:text-gray-900">
+                <Link key={item.name} href={item.href} className="font-semibold text-gray-900 hover:text-gray-900">
                   {item.name}
-                </a>
+                </Link>
               ))}
             </div>
             <div className="hidden lg:flex lg:min-w-0 lg:flex-1 lg:justify-end">
