@@ -1,16 +1,27 @@
 /* This example requires Tailwind CSS v3.0+ */
-import { useState } from 'react'
-import { Dialog } from '@headlessui/react'
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import Example from '../../components/PostComponent'
-import Link from 'next/link'
-const navigation = [
-  { name: 'Bloggy', href: '/' },
-]
+import { useState } from "react";
+import { Dialog } from "@headlessui/react";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import Example from "../../components/PostComponent";
+import Link from "next/link";
+const navigation = [{ name: "Bloggy", href: "/" }];
+import { PrismaClient } from "@prisma/client";
 
-export default function PostComponent() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+// Fetch all posts (in /pages/index.tsx)
+export async function getStaticProps() {
+  const prisma = new PrismaClient();
+  const posts = await prisma.post.findMany();
+  const allPosts = JSON.parse(JSON.stringify(posts));
 
+  return {
+    props: { allPosts },
+  };
+}
+
+export default function PostComponent({posts}) {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  
+  console.log(posts);
   return (
     <div className="isolate bg-white">
       <div className="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]">
@@ -42,11 +53,18 @@ export default function PostComponent() {
       </div>
       <div className="px-6 pt-6 lg:px-8">
         <div>
-          <nav className="flex h-9 items-center justify-between" aria-label="Global">
+          <nav
+            className="flex h-9 items-center justify-between"
+            aria-label="Global"
+          >
             <div className="flex lg:min-w-0 lg:flex-1" aria-label="Global">
               <a href="#" className="-m-1.5 p-1.5">
                 <span className="sr-only">Your Company</span>
-                <img className="h-8" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="" />
+                <img
+                  className="h-8"
+                  src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                  alt=""
+                />
               </a>
             </div>
             <div className="flex lg:hidden">
@@ -61,7 +79,11 @@ export default function PostComponent() {
             </div>
             <div className="hidden lg:flex lg:min-w-0 lg:flex-1 lg:justify-center lg:gap-x-12">
               {navigation.map((item) => (
-                <Link key={item.name} href={item.href} className="font-semibold text-gray-900 hover:text-gray-900">
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className="font-semibold text-gray-900 hover:text-gray-900"
+                >
                   {item.name}
                 </Link>
               ))}
@@ -79,10 +101,49 @@ export default function PostComponent() {
       </div>
       <main>
         <div className="relative px-6 lg:px-8">
+          <div className="py-24 sm:py-32 lg:py-40">
+            <div className="mx-auto max-w-7xl px-6 lg:px-8">
+              <div className="sm:text-center">
+                <h2 className="text-lg font-semibold leading-8 text-indigo-600">
+                  Transactions
+                </h2>
+                <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                  Latest posts
+                </p>
+                <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-gray-600">
+                  Lorem ipsum dolor sit amet consect adipisicing elit. Possimus
+                  magnam voluptatum cupiditate veritatis in accusamus quisquam.
+                </p>
+              </div>
 
-          <Example />
+              <div className="mt-20 max-w-lg sm:mx-auto md:max-w-none">
+                <div className="grid grid-cols-1 gap-y-16 md:grid-cols-2 md:gap-x-12 md:gap-y-16">
+                  {posts?.map((post) => (
+                    <div
+                      key={post.id}
+                      className="relative flex flex-col gap-6 sm:flex-row md:flex-col lg:flex-row"
+                    >
+                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-500 text-white sm:shrink-0">
+                        {/* <feature.icon className="h-8 w-8" aria-hidden="true" /> */}
+                      </div>
+                      <div className="sm:min-w-0 sm:flex-1">
+                        <p className="text-lg font-semibold leading-8 text-gray-900">
+                          {post.title}
+                        </p>
+                        <p className="mt-2 text-base leading-7 text-gray-600">
+                          {post.content}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </main>
     </div>
-  )
+  );
 }
+
+
